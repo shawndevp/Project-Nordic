@@ -19,10 +19,13 @@ function Profile({
   created,
   profilepicture,
   score
-}) {
+}) 
+//Hämta props från ProfileInfo.js
+{
   const [url, setUrl] = useState(
     "https://gravatar.com/avatar/a0310ba74bcd933a1f4a3cb00de31fea?s=400&d=mp&r=x"
   );
+  // Förinställd img för varje ny användare.
   useEffect(() => {
     if (profilepicture) {
       const profilePicUrl = profilepicture.formats.small.url;
@@ -47,10 +50,9 @@ function Profile({
     zipcode: zipcode,
     country: country,
     email: email,
-    currentPassword: "",
-    newPassword: "",
-    confirmNewPassword: "",
   };
+
+  // Initiala värden som går att ändra i Profil
 
   const [editUserValue, setEditValue] = useState(editValues);
 
@@ -73,9 +75,13 @@ function Profile({
     editUserValues();
   }
 
+  // Funktion för att byta värden som ändras och skickas in DB/Strapi
+
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  //Funktion för att automatiskt göra det man skriver in som nytt vädre till första bokstaven som stor bokstav.
 
   function onChangeUser(e) {
     setEditValue({
@@ -83,6 +89,8 @@ function Profile({
       [e.target.name]: capitalizeFirstLetter(e.target.value),
     });
   }
+
+  //Vid ändring markera rätt värden så att det stämmer överens med vad som skrivs in.
 
   function deleteUser() {
     const deletePerson = async () => {
@@ -101,6 +109,8 @@ function Profile({
     };
     deletePerson();
   }
+
+  // Funktion för att bort användare från DB/Strapi och skicka till SignIn sidan.
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -148,6 +158,8 @@ function Profile({
       </Modal>
     );
   }
+
+  //Modal funktion vid klick av "Radera konto"
 
   const image1 =
     "https://images.unsplash.com/photo-1529900672901-908be5302554?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80";

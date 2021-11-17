@@ -1,4 +1,5 @@
 function getTeamFlag(team) {
+  //Funktion till att ha brutit ned flaggorna så att dom är definerade i mer strukturerat hål 
   let countries = {
     Poland: "PL",
     Albania: "AL",

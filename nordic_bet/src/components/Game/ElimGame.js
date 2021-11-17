@@ -49,6 +49,8 @@ function ElimGame({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Hämta alla events och sätter flaggor till hem och bortalag i useEffect
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -66,12 +68,16 @@ function ElimGame({
     }),
   }));
 
+  //MUI expandering av card
+
   const initialValues = {
     typeOfBet: "",
     homeTeamGoals: "",
     awayTeamGoals: "",
     winner: "",
   };
+
+  // Initala värden som ändras av vad user väljer
 
   const [formValues, setFormValues] = useState(initialValues);
 
@@ -89,7 +95,9 @@ function ElimGame({
         })
         .then();
       window.location.reload();
-    } else if (formValues.typeOfBet === "BetOnGoals") {
+    } 
+    // Submit knapp som postar vad man bettat i Strapi
+    else if (formValues.typeOfBet === "BetOnGoals") {
       instance
         .post(`bets`, {
           type: formValues.typeOfBet,
@@ -101,7 +109,9 @@ function ElimGame({
         })
         .then();
       window.location.reload();
-    } else if (formValues.typeOfBet === "BetOnWinner") {
+    } 
+    // Samma submit knapp men visas olika i UI beroende på spel
+    else if (formValues.typeOfBet === "BetOnWinner") {
       instance
         .post(`bets`, {
           type: formValues.typeOfBet,
@@ -113,7 +123,9 @@ function ElimGame({
         })
         .then();
       window.location.reload();
-    } else {
+    } 
+    // Samma submit knapp men visas olika i UI beroende på spel
+    else {
       console.log("empty fields");
     }
   }
@@ -121,8 +133,12 @@ function ElimGame({
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
 
+  // Värde som som ändras och skrivs ska "sparas" -> skickas med till strapi på handleonchange
+
   const HomeFlag = Flags[homeFlag];
   const AwayFlag = Flags[awayFlag];
+
+  //Flaggor
 
   return (
     <>

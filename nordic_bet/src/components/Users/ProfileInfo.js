@@ -9,6 +9,8 @@ function ProfileInfo() {
   const [userInfo, setUserInfo] = useState([]);
   const instance = axios.create({ baseURL: server });
 
+  //Hämta användare och koppla server connection
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       const response = await instance.get(`Users?id=${userId}`);
@@ -18,16 +20,7 @@ function ProfileInfo() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-    useEffect(()=> {
-        const fetchUserInfo = async()=>{
-            const response = await instance.get(
-                `Users?id=${userId}`
-              )  
-              setUserInfo(response.data)
-        }
-        fetchUserInfo()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+  //Hämta användare
     
 
 
@@ -41,6 +34,7 @@ function ProfileInfo() {
             
         </>
     )
+    // Mappa igenom de props (Child) vi vill skicka till profile.js
 }
 
 export default ProfileInfo;

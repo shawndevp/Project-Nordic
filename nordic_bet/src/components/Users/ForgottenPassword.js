@@ -33,6 +33,8 @@ function Copyright(props) {
   );
 }
 
+//Funktion för att visa företagsnamn samt nuvarande årstid gällande copyright
+
 const theme = createTheme();
 const instance = axios.create({ baseURL: server });
 
@@ -77,6 +79,9 @@ export default function RequestPassword() {
     setRequested(false)
     history.push("./SignIn")
   }
+
+  //Funktion som hämtar det email som användare skriver in och skickar ett mail med anvisningar. Sedan skickar användare till "SignIn"
+  // Fungerar endast om användaren har skapats, alltså har en JWT. 
   return (
     <>
       {jwt ? (

@@ -16,6 +16,7 @@ function MyBets() {
 
   const [activeBets, setActiveBets] = useState([]);
   const [finishedBets, setFinishedBets] = useState([]);
+  // Hämta användare, skapa connection till strapi, samt hämta spel beroende på om man lagt det spelet. 
 
 
   useEffect(() => {
@@ -35,6 +36,8 @@ function MyBets() {
     fetchFinishedBets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeLoadPage,finishedLoadPage]);
+
+  //Hämta aktiva och Färdiga spel som lagts. 
   
   function loadMoreActive() {
     let dynamicPage = activeLoadPage + 2;
@@ -50,6 +53,8 @@ function MyBets() {
   function showLessFinished() {
     setFinishedLoadPage(3);
   }
+
+  //Visa mer eller mindre funktion som knapp.
 
   const image1 =
   "https://images.unsplash.com/photo-1579156412375-310af82390a8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80";

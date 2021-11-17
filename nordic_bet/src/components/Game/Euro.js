@@ -15,6 +15,8 @@ function Euro() {
   }
   useEffect(() => {}, [formValues]);
 
+  // Konstant variabel för att alternativen ska finnas i en useEffect
+
   const image1 =
     "https://images.unsplash.com/photo-1531819318554-84abdf082937?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2246&q=80";
 
@@ -88,7 +90,7 @@ function Euro() {
                     className="opacity-75"
                     name="typeOfView"
                     id="view"
-                    value={formValues.view}
+                    value={formValues.typeOfView}
                     onChange={handleOnChange}
                   >
 
@@ -124,7 +126,7 @@ function Euro() {
                     className="opacity-75"
                     name="typeOfView"
                     id="view"
-                    value={formValues.view}
+                    value={formValues.typeOfView}
                     onChange={handleOnChange}
                   >
                     <option value="EliminationView">Utslags-turnering</option>

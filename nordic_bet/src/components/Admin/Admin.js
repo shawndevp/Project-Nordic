@@ -17,7 +17,7 @@ function Admin() {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
  
-  console.log(formValues)
+
   useEffect(() => {
     const instance = axios.create({ baseURL: server });
     const userId = localStorage.getItem("user_id");

@@ -53,7 +53,7 @@ export default function ResetPassword() {
       })
       .catch(showError);
 };
-
+// Återställ lösenord funktion går via "Forgotten password" denna funktion gör att man får en kod skickad till sig som har en unik länk att kunna återställa lösenord.
   
 
 function showError(e) {
@@ -77,6 +77,8 @@ function handleToggle() {
     setVisibility(false)
   }
 }
+
+//Funktion för att toggla så man kan visa eller dölja lösenord när man skriver in.
 
   return (
       <>

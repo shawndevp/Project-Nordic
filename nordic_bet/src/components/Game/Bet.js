@@ -33,6 +33,8 @@ function Bet({
 
   const real_winner = euro_event.winner;
   const teams = euro_event.eventname.split("-");
+
+  // splitta tecknet "-" som är försatt i db för att bara visa lagnamnet
   let home_name = teams[0];
   let away_name = teams[1];
   if (euro_event.home_team !== "" && euro_event.home_team !== null) {
@@ -47,6 +49,8 @@ function Bet({
   } else {
     liveStatus = "Score given!";
   }
+  // setta variabler och if statement för att hämta ut lagnamnen
+
   const dateArray = euro_event.deadline.split("T");
   const date = dateArray[0];
   const timeArray = dateArray[1].split(":");
@@ -74,6 +78,8 @@ function Bet({
     }),
   }));
 
+  // MUI - react exapnd funktion
+
   var score = 0;
   if (type === "BetOnResult") {
     score = +5;
@@ -93,10 +99,14 @@ function Bet({
     deleteBet();
   }
 
+  // Submit funktion för att ta bort placerat spel
+
   const HomeFlag = Flags[homeFlag];
   const AwayFlag = Flags[awayFlag];
   const BetWinnerFlag = Flags[betWinnerFlag];
   const WinnerFlag = Flags[winnerFlag];
+
+  // setta konstanta variabler som definerar och hämtar flaggor 
 
   return (
     <>

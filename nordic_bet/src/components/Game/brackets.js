@@ -15,6 +15,8 @@ function Brackets() {
     const [loading, setLoading] = useState(true);
     const instance = axios.create({ baseURL: server });
 
+    // konstanta variabler för kopplining till instance put mot strapi och "brackets" som ska visas
+
     const fetchCountries = async () => {
       try {
         const data = await instance.get(`euro_events?grp=EURO 1/8 finals`);
@@ -31,6 +33,8 @@ function Brackets() {
 
       setLoading(false);
     };
+
+    // Hämtar alla evenets
 
     useEffect(() => {
       fetchCountries();
@@ -54,6 +58,8 @@ function Brackets() {
     "2B-2F":8,
   }
 
+  // konstant variabel för grupperna definerat i vilken ordning dom tillhör. 
+
   const sorted16 = []
   if (!loading) {
 
@@ -67,12 +73,9 @@ function Brackets() {
     sorted16.sort(function(a,b ){
       return (a.teamsort - b.teamsort)
     })
-    // games16Array.sort(function (a, b) {
-      
-    // })
-
-   
   }
+
+  // Sortering av lag från 16 lag i gruppspel
 
   return (
     <>
@@ -142,7 +145,8 @@ function Brackets() {
                   const away = teams[1]
                   const HomeFlag = Flags[getTeamFlag(game.teaminfo.home_team)];
                   const AwayFlag = Flags[getTeamFlag(game.teaminfo.away_team)];
-                  
+                  //Hämtar flaggor
+                  // Sätter opacitet beroende på vinnare & förlorare
                   if(game.teaminfo.winner === game.teaminfo.home_team){
                     awayOpacity = "awayOpacity"
                   }else if(game.teaminfo.winner === game.teaminfo.away_team) {
@@ -207,6 +211,8 @@ function Brackets() {
                   const away_pre = teams[1];
                   const HomeFlag = Flags[getTeamFlag(home)];
                   const AwayFlag = Flags[getTeamFlag(away)];
+
+                  //Opacitet & flaggor här med
                   
                   if (game.home_team !== "" && game.away_team !== "") {
                     return (
@@ -268,6 +274,8 @@ function Brackets() {
                   const away_pre = teams[1];
                   const HomeFlag = Flags[getTeamFlag(home)];
                   const AwayFlag = Flags[getTeamFlag(away)];
+
+                  //Opacitet & flaggor här med
 
                   if (game.home_team !== "" && game.away_team !== "") {
                     return (
@@ -355,6 +363,8 @@ function Brackets() {
                   const away_pre = teams[1];
                   const HomeFlag = Flags[getTeamFlag(home)];
                   const AwayFlag = Flags[getTeamFlag(away)];
+
+                  //Opacitet & flaggor här med
 
                   if (game.home_team !== "" && game.away_team !== "") {
                     return (

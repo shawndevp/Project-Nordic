@@ -19,6 +19,8 @@ function Groups() {
       "EURO Grp. F",
     ];
 
+    // Konstantera grupper
+
     const instance = axios.create({ baseURL: server });
 
     const fetchGames = async () => {
@@ -41,6 +43,8 @@ function Groups() {
 
     return { loading, gamesArray };
   };
+
+  // Fetcha och hämta alla grupper
 
   const { loading, gamesArray } = useGetGames();
   
@@ -124,6 +128,8 @@ function Groups() {
                   const HomeFlag = Flags[setTeamFlag("home", home_team)];
                   const AwayFlag = Flags[setTeamFlag("away", away_team)];
 
+                  // Mappa igenom spelen och settar dess värden med lag och flaggor.
+
                   return (
                     <tr key={key2}>
                       <td>
@@ -140,6 +146,7 @@ function Groups() {
                     </tr>
                   );
                 })}
+                
               </tbody>
             </table>
             <br />

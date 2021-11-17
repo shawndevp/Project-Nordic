@@ -23,13 +23,17 @@ function Games() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadPage]);
 
+  // useEffect för att fetcha spelen
+
   function loadMore() {
     let dynamicPage = loadPage + 3;
     setLoadPage(dynamicPage);
   }
+  //Visa mer spel knapp.
   function showLess() {
     setLoadPage(5);
   }
+  //Visa mindre spel knapp 
 
 
   const image1 =

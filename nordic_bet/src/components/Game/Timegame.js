@@ -25,6 +25,8 @@ useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Time funktion som ska rätta spelen bereonde på tid.. Inte aktiv men går att aktivera. 
+
 
     return (
         <div>

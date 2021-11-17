@@ -46,6 +46,8 @@ const FileInput = () => {
     }
   }, [files]);
 
+  //useEffect som hämtar nuvarande användare samt när den användaren är inne i "Profile" och vill byta bild så puttar den bilden in i DB/Strapi och ändrar på sidan.
+
   return (
     <>
       <input

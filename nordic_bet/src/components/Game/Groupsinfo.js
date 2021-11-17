@@ -75,6 +75,7 @@ function Groupsinfo() {
 
           return returnValue;
         });
+        // Mapp och sort funktion i brackets -> grupper som sorterar beroende på vem som har mest poäng och mål i gruppen
         
         return (
           <div key={key}>
@@ -108,6 +109,8 @@ function Groupsinfo() {
                     textcolor = 'Diskvalificerad'
 
                   }
+
+                  // Visa olika status och färger berenede på om land har skickats som "Qualified" eller "Disqualified" samt TBA eller inväntar
                 
                   return (
                     <tr key={key2}>

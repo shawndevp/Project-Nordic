@@ -29,7 +29,9 @@ function Game({
   home,
   away,
   deadline
-}) {
+})
+//Hämta Props från Game.js
+{
   const instance = axios.create({ baseURL: server });
   const playingTeams = eventname.split("-");
   let home_team = playingTeams[0];
@@ -40,7 +42,8 @@ function Game({
   if (away !== "" && away !== null){
     away_team = away
   }
- 
+ //Definera och hämta hemma och bortalag
+
   const [gameId, setGameId] = useState();
   const user_id = localStorage.getItem("user_id");
   
@@ -54,6 +57,8 @@ function Game({
   const date = dateArray[0]
   const timeArray = dateArray[1].split(":")
   const time = timeArray[0] + ":" + timeArray[1]
+
+  //Split för att ta bort specifika tecken i date och time från DB
   useEffect(() => {
     const fetchGameId = async () => {
       const response = await instance.get(`Euro_events?eid_xml=${event_id}`);
@@ -80,7 +85,7 @@ function Game({
     }
     fetchBetOnGame()
   }
-
+// Fetchar varje spel på en match
 
   const [expanded, setExpanded] = React.useState(false);
 
@@ -98,13 +103,15 @@ function Game({
       duration: theme.transitions.duration.shortest,
     }),
   }));
-
+ // Expand MUI 
   const initialValues = {
     typeOfBet: "",
     homeTeamGoals: "",
     awayTeamGoals: "",
     winner: "",
   };
+
+  // Initiala värden som är "null" först sedan ska följas med vad man skriver. 
 
   const [formValues, setFormValues] = useState(initialValues);
 
@@ -126,7 +133,10 @@ function Game({
         })
         .then();
       window.location.reload();
-    } else if (formValues.typeOfBet === "BetOnGoals") {
+    } 
+    // Submit knapp som postar värden man har fyllt in till Strapi
+
+    else if (formValues.typeOfBet === "BetOnGoals") {
       instance
         .post(`bets`, {
           type: formValues.typeOfBet,
@@ -157,13 +167,18 @@ function Game({
       console.log("empty fields");
     }
   }
+
+  // Samma submit knapp fast beroende på vad för spel man lägger.
+
   function handleOnChange(e) {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
 
+  // hantering beroende på änding
+
   const HomeFlag = Flags[homeFlag];
   const AwayFlag = Flags[awayFlag];
-
+  // Konstatera flaggor
   return (
     <>
       <div className="mb-3">
