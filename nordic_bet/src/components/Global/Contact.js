@@ -1,13 +1,13 @@
 import React from "react";
 import emailjs from "emailjs-com";
 
-
+//simple contact form that is connected to davids gmail, does only work if the variable is removed
 function Contact() {
-  
+  const removeThisInOrderToWork = "s"
   function sendMessage(e) {
     e.preventDefault();
 
-    emailjs.sendForm('service_z8sqxi9', 'template_y03d36e', e.target, 'user_wnDYkMS4bE8n5c5pygE8r')
+    emailjs.sendForm(`service_z8sqxi9${removeThisInOrderToWork}`, 'template_y03d36e', e.target, 'user_wnDYkMS4bE8n5c5pygE8r')
       .then((result) => {
           console.log(result.text);
       }, (error) => {

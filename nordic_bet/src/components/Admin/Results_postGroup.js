@@ -2,9 +2,13 @@ import React from "react";
 import server from "../Global/config";
 import axios from "axios";
 
+
+//function for manually posting the result information of the games after the group stage, because we didnt have access to them before hand. 
+//the results of the group games we put into the database phpmyadmin via a php script in the NORDIC-BET-PRAKTIK-2021 map called parsing....something 
 function Results_postGroup() {
     const instance = axios.create({ baseURL: server });
 
+    //manually setting an array of objects of the results for the round of 16 games
     const data16 = [
         
         {event:{
@@ -75,6 +79,7 @@ function Results_postGroup() {
         }}
            
     ]
+    //manually setting an array of objects of the results for the quarterfinal games
 
     const dataQuarter = [
          
@@ -114,6 +119,8 @@ function Results_postGroup() {
         }}
     ]
 
+    //manually setting an array of objects of the results for the semi final games
+
     const dataSemi = [
           
         {event:{
@@ -136,6 +143,8 @@ function Results_postGroup() {
     },
 ]
 
+    //manually setting an array of objects of the results for the final game
+
 const dataFinal = [
     {event:{
         id:1695478,
@@ -147,6 +156,7 @@ const dataFinal = [
     }
     },
 ]
+//function for posting the results into the database (round of 16 games)
 // eslint-disable-next-line
     function post16Results() {
         for(let i = 0; i< data16.length; i++){
@@ -171,6 +181,8 @@ const dataFinal = [
             put16Results()
         }
     }
+
+    //function for posting the results into the database (quarter games)
     // eslint-disable-next-line
     function postQuarter() {
         for(let i = 0; i< dataQuarter.length; i++){
@@ -195,6 +207,7 @@ const dataFinal = [
             putQuarter()
         }
     }
+    //function for posting the results into the database (semi games)
     // eslint-disable-next-line
     function postSemi() {
         for(let i = 0; i< dataSemi.length; i++){
@@ -219,6 +232,7 @@ const dataFinal = [
             putSemi()
         }
     }
+    //function for posting the results into the database (final)
      // eslint-disable-next-line
     function postFinal() {
         for(let i = 0; i< dataFinal.length; i++){
@@ -248,6 +262,7 @@ const dataFinal = [
     
     
     return (
+        /*These are buttons for posting the results once, dont press them twice or you will have duplicate data */
         <div>
             already posted
             This only needs to be posted once into the admins database :)
